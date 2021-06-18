@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AV Downloader</string>
+    <string name="interstitialAdsId">ca-app-pub-3940256099942544/1033173712</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="about">AV Downloader able to direct download any social media video
+        without any watermark and supportable in every video player.
+    You can download any video easily through AV Downloader App.
+    </string>
+
+    <string name="howtoUse"> <b>AV Downloader</b> is very easy to use. First copy the link which video
+                    you want to download. Then go to AV Downloader App and select which plateform you copied the link.
+        Paste and click the download button.It will take some time depending on your network bandwidth. Check notification panel to confirm downloading completed or not.
+
+    </string>
+
+    <string name="policy"><u>See privacy policy</u></string>
+
+</resources>
