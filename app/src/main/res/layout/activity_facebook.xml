@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 app:boxStrokeColor="#1877f2"
                 app:hintTextColor="#1877f2"
+                app:errorIconTint="@color/colorPrimary"
                 android:padding="14dp">
 
                 <com.google.android.material.textfield.TextInputEditText

@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,25 +24,39 @@ public class InstagramActivity extends AppCompatActivity {
     private ActivityInstagramBinding binding;
     private  String videoUrl, video;
     private ProgressDialog dialog;
+    private ClipboardManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_instagram);
+
+        manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         dialog = new ProgressDialog(this);
-        dialog.setMessage("Loading! Please Wait");
+        dialog.setMessage("Please Wait! It may take few seconds");
         dialog.setCancelable(false);
 
         binding.downloadBtn.setOnClickListener(v -> {
             getVideo();
             binding.instaUrl.setText("");
         });
+        binding.pasteBtn.setOnClickListener(v -> {
+            pasteData();
+        });
 
     }
+    private void pasteData() {
+        ClipData.Item item = manager.getPrimaryClip().getItemAt(0);
+        String paste = item.getText().toString();
+        if (!paste.isEmpty()){
+            binding.instaUrl.setText(paste);
+        }else binding.instaUrl.setError("Clipboard Empty");
+    }
+
 
     private void getVideo() {
         if (TextUtils.isEmpty(binding.instaUrl.getText().toString())){
-            Toast.makeText(this, "Please paste link", Toast.LENGTH_SHORT).show();
+            binding.instaUrl.setError("Please Paste Link");
         }else {
             if (binding.instaUrl.getText().toString().contains("instagram")){
                 dialog.show();
