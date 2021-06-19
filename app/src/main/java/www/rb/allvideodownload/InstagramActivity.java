@@ -50,6 +50,7 @@ public class InstagramActivity extends AppCompatActivity {
         String paste = item.getText().toString();
         if (!paste.isEmpty()){
             binding.instaUrl.setText(paste);
+//            git test
         }else binding.instaUrl.setError("Clipboard Empty");
     }
 
